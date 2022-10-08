@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-server-deployment
+  labels:
+    app: frontend-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-server
+  template:
+    metadata:
+      labels:
+        app: frontend-server
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: frontend
+          image: seoyyy/frontend-server
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80

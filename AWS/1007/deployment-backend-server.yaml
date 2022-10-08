@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-server-deployment
+  labels:
+    app: backend-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-server
+  template:
+    metadata:
+      labels:
+        app: backend-server
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: backend
+          image: seoyyy/backend-server
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
